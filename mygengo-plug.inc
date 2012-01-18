@@ -37,7 +37,8 @@ function mygengo_plug_fetch($m,$url,$opts) {
 		$resp = drupal_http_request($url . "?" . mygengo_plug_build($opts),array(
 			'method' => 'GET',
 			'headers' => array(
-			'Accept' => 'application/json')));
+			'Accept' => 'application/json',
+			'User-Agent' => 'myGengo Drupal 7 Plugin; Version 1.0; https://github.com/meedidy/mygengo-drupal-7')));
 		$resp = $resp->data;
 	}
 	elseif($m == "POST") {
@@ -46,7 +47,8 @@ function mygengo_plug_fetch($m,$url,$opts) {
 		'data' => http_build_query($opts),//substr($tmp,0,strlen($tmp)-1),
 		'headers' => array(
 			'Accept' => 'application/json',
-			'Content-Type' => 'application/x-www-form-urlencoded')));
+			'Content-Type' => 'application/x-www-form-urlencoded',
+			'User-Agent' => 'myGengo Drupal 7 Plugin; Version 1.0; https://github.com/meedidy/mygengo-drupal-7')));
 	}
 	
 	$json = drupal_json_decode($resp);
@@ -128,7 +130,8 @@ function mygengo_plug_post_job($lc_src,$lc_tgt,$tier,$body,$comment,$summary,$au
 		'data' => http_build_query($opts),
 		'headers' => array(
 			'Accept' => 'application/json',
-			'Content-Type' => 'application/x-www-form-urlencoded')));
+			'Content-Type' => 'application/x-www-form-urlencoded',
+			'User-Agent' => 'myGengo Drupal 7 Plugin; Version 1.0; https://github.com/meedidy/mygengo-drupal-7')));
 	
 	return drupal_json_decode($resp->data);
 }
@@ -146,6 +149,7 @@ function mygengo_plug_post_comment($jid,$comment) {
 		'data' => http_build_query($opts),
 		'headers' => array(
 			'Accept' => 'application/json',
+			'User-Agent' => 'myGengo Drupal 7 Plugin; Version 1.0; https://github.com/meedidy/mygengo-drupal-7',
 			'Content-Type' => 'application/x-www-form-urlencoded')));
 
 	return drupal_json_decode($resp->data);
@@ -175,6 +179,7 @@ function mygengo_plug_put_job($jid,$act,$args) {
 		'method' => 'GET',
 		'headers' => array(
 			'Accept' => 'application/json',
+			'User-Agent' => 'myGengo Drupal 7 Plugin; Version 1.0; https://github.com/meedidy/mygengo-drupal-7',
 			'Content-Type' => 'application/x-www-form-urlencoded')));
 	
 	return drupal_json_decode($resp->data);
@@ -306,6 +311,7 @@ function mygengo_plug_cancel($jid) {
 		'method' => 'GET',
 		'headers' => array(
 			'Accept' => 'application/json',
+			'User-Agent' => 'myGengo Drupal 7 Plugin; Version 1.0; https://github.com/meedidy/mygengo-drupal-7',
 			'Content-Type' => 'application/x-www-form-urlencoded')));
 
 	return drupal_json_decode($resp->data);
